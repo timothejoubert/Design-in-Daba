@@ -1,20 +1,20 @@
-import Banner from '../../assets/img-banner-1.jpg';
-import CountryMap from '../../assets/Benin-africa-country.svg';
 
-function ArtistBanner() {
+function ArtistBanner( {artistContent} ) {
+
+	//console.log(artistContent);
+
+	const descrObj = {
+		__html: artistContent.description.replace(/(?:\r\n|\r|\n)/g, "<br>"),
+	  };
 
   return (
 		<article className="container-banner">
 			<div className="container-img-banner">
-				<img src={Banner} alt=""/>
+				<img src={process.env.PUBLIC_URL + artistContent.banner_img} alt=""/>
 			</div>
 			<div className="container-text-banner">
 				<h3>The artist</h3>
-				<p>Louis Houenoude lives in the small village of Heve, just outside Grand-Popo, in the small West African country of Benin. He used to paint barber shop signs for a living. But now he is a bona fide artist. An art gallery in Finland is exhibiting a series of portraits painted by Mr Houenoude.</p>
-				<p>The portrait series, called Bad Hair Day Leaders, consists of 14 portraits of today's world leaders, from Angela Merkel to Xi Jinping. Last year, Mr Houenoude painted a portrait of the Finnish President Sauli Niinisto which was bought by the Finland's Ministry of Foreign Affairs.</p>
-				<div className="container-img-country-artist">
-					<img src={CountryMap} alt=""/>
-				</div>
+				<p dangerouslySetInnerHTML={descrObj}></p>
 			</div>
 		</article>
 	)

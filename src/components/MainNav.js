@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import './MainNav.css';
 import ArtistVisited from './ArtistVisited';
 
-function MainNav() {
+function MainNav( { data, currentArtistPage }) {
+
+
 	let [artistVisited, initArtistVisited] = useState(false);
 
 	const toggleArtistVisited = () => {
@@ -11,10 +13,11 @@ function MainNav() {
 
   return (
 	  <>
-		<nav className="main-nav">
+		<nav className="main-nav" style={{ backgroundColor: currentArtistPage.main_color }}>
 
-			<div className="artist-dropdown" onClick={toggleArtistVisited}>
-				<div className="artist-dropdown-btn">
+			<div className="artist-dropdown">
+				
+				<div className="artist-dropdown-btn" onClick={toggleArtistVisited}>
 					<svg className="grid-btn-svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<circle cx="1.76471" cy="1.76471" r="1.76471" fill="#2D2D2D"/>
 						<circle cx="9.99908" cy="1.76471" r="1.76471" fill="#2D2D2D"/>
@@ -32,9 +35,8 @@ function MainNav() {
 					</svg>
 				</div>
 
-				<div className="artist-dropdown-content">
-					
-				</div>
+				<ArtistVisited open={artistVisited} data={data} />
+
 			</div>
 
 			<div className="container-logo">
@@ -49,8 +51,6 @@ function MainNav() {
 			</div>
 
 		</nav>
-
-		<ArtistVisited open={artistVisited} />
 		
 	</>
   );

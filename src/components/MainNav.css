@@ -1,12 +1,14 @@
 
 /* container global */
 .main-nav{
-	position: relative;
-	z-index: 5;
+	position: fixed;
+	z-index: 10;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px 30px;
+	width: 100%;
+	background-color: var(--bg-color);
 }
 
 
@@ -15,6 +17,8 @@
 	cursor: pointer;
 }
 .artist-dropdown-btn{
+	position: relative;
+	z-index: 5;
 	display: flex;
 	align-items: center;
 }

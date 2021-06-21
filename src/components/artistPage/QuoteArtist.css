@@ -2,7 +2,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	height: 90vh;
+	height: 100vh;
 	text-align: center;
 }
 .container-quote{
@@ -37,6 +37,9 @@
 		font-variation-settings: "wght" 900, "SPAC" 120;
 	}
 }
+.colors-panel-country{
+	margin: 30px 0;
+}
 .Artist-name{
 	display: block;
 	font-family: "Movement";
@@ -44,12 +47,23 @@
 	font-variation-settings: "wght" 700, "SPAC" 100;
 	font-style: normal;
 	text-transform: uppercase;
-	margin: 50px 0 10px 0;
+	margin: 10px 0;
 }
 .Artist-country{
 	font-family: "Lexend";
 	font-size: 1em;
 	text-transform: uppercase;
+}
+.container-img-country-artist{
+	margin-top: 50px;
+	width: 100%;
+}
+.container-img-country-artist img, .container-img-country-artist svg{
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+	display: block;
+	max-width: 120px;
 }
 
 
