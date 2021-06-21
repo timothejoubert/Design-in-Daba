@@ -1,0 +1,15 @@
+/* .container-artistPage{
+	margin: 0 60px;
+} */
+@media (max-width: 1000px) { 
+	.container-img-banner{
+		width: 100%;	
+	}
+	.container-text-banner{
+		text-align: center;
+		width: 100%;
+		max-width: 600px;
+		margin: 30px auto;
+		padding: 0 20px;
+	}
+}

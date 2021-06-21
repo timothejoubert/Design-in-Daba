@@ -1,13 +1,50 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root{
+  --dark-color: #3a3939;
+  --light-color: #eeeeee;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@font-face {
+  font-family: "Movement";
+  src: url('./fonts/MovementV.ttf') format(truetype);
+}
+@font-face {
+  font-family: "Lexend";
+  src: url('./fonts/Lexend-Light.ttf') format(truetype);
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Lexend";
+  src: url('./fonts/Lexend-Regular.ttf') format(truetype);
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Lexend";
+  src: url('./fonts/Lexend-Bold.ttf') format(truetype);
+  font-weight: 600;
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+*::selection{
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+body{
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  font-family: "Lexend", sans-serif;
+}
+h1, h2, h3{
+  font-family: "Movement", sans-serif;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+}
+li{
+  list-style: none;
 }

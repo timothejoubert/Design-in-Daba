@@ -1,0 +1,22 @@
+.container-more-text{
+	padding: 200px 0;
+	margin: 0 100px;
+}
+.container-more-text h3{
+	font-size: 2em;
+	margin-bottom: 50px;
+}
+.container-more-text p:not(:last-child){
+	margin-bottom: 20px;
+}
+
+@media (max-width: 1000px) { 
+	.container-more-text{
+		text-align: center;
+	}
+}
+@media (max-width: 650px) { 
+	.container-more-text{
+		margin: 0 20px;
+	}
+}

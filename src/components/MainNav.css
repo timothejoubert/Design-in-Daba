@@ -1,0 +1,52 @@
+
+/* container global */
+.main-nav{
+	position: relative;
+	z-index: 5;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 30px;
+}
+
+
+/* Artist */
+.artist-dropdown{
+	cursor: pointer;
+}
+.artist-dropdown-btn{
+	display: flex;
+	align-items: center;
+}
+.artist-dropdown-btn:hover{
+	opacity: 0.8;
+	transition: opacity 150ms;
+}
+.artist-dropdown-btn svg{
+	transition: transform 150ms;
+}
+.artist-dropdown-btn > *:not(:last-child){
+	margin-right: 20px;
+} 
+/* logo */
+.container-logo{
+	text-align: center;
+}
+.container-logo h2{
+	font-size: 1em;
+	font-weight: 400;
+}
+
+
+/* about */
+
+
+
+@media (max-width: 650px) { 
+	.main-nav{
+		justify-content: center;
+	}
+	.artist-dropdown, .about-item{
+		display: none;
+	}
+}

@@ -1,0 +1,35 @@
+.container-banner{
+	display: flex;
+	flex-wrap: wrap;
+}
+.container-img-banner{
+	width: 60%;
+}
+.container-img-banner img{
+	width: 100%;
+}
+
+.container-text-banner{
+	width: 40%;
+	padding: 0 40px;
+}
+
+.container-text-banner h3{
+	margin-bottom: 40px;
+	font-size: 2em;
+}
+.container-text-banner p:not(:last-child){
+	margin-bottom: 20px;
+}
+.container-img-country-artist{
+	margin-top: 40px;
+	width: 100%;
+}
+.container-img-country-artist img{
+	width: 80%;
+	margin: 0 auto;
+	display: block;
+	max-width: 250px;
+}
+
+
