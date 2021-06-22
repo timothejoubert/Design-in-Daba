@@ -1,8 +1,8 @@
 /* container-selected-work */
 .container-selected-work{
+	position: relative;
 	margin-top: 150px;
 }
-
 .title-selected-work{
 	width: 500px;
 	margin: 0 auto;
@@ -11,32 +11,6 @@
 .title-selected-work h3{
 	font-size: 2em;
 	margin-bottom: 20px;
-}
-
-
-.content-selected-work{
-	display: flex;
-	height: 80vh;
-	margin: 10vh 0;
-	/* padding: 0 0 200vh; */
-	overflow: hidden;
-}
-.container-block-img{
-	width: auto;
-	height: 100%;
-	border-radius: 2px;
-	margin-right: 50px;
-}
-.container-block-img:first-child{
-	margin-left: 50px;
-}
-.container-block-img img{
-	height: 90%;
-	width: auto;
-}
-.container-block-img p{
-	font-size: 0.8em;
-	max-width: 300px;
 }
 
 @media (max-width: 650px) { 

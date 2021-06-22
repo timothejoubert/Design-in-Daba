@@ -1,0 +1,50 @@
+.scroll-container {
+	margin-top: 50px;
+	position: relative;
+	/* overflow-x: hidden; */
+	left: 0;
+	right: 0;
+	will-change: transform;
+}
+.ghost {
+    width: 100vw;
+}
+.thumbnails-container {
+	position: sticky;
+	top: 150px;
+	height: 70vh;
+	width: max-content;
+	/* width: 100%; */
+	display: flex;
+	align-items: flex-start;
+	padding: 0px 160px;
+}  
+.thumbnails {
+    position: relative;
+    display: flex;
+	align-items: flex-start;
+	margin: 0 70vw;
+	height: 100%;
+}
+.thumbnails > * {
+	margin-right: 45px;
+}
+
+.thumbnails > .container-block-img:first-child {
+	margin-left: 20vw;
+}
+.thumbnails > .container-block-img:last-child {
+	margin-right: 20vw;
+}
+.thumbnail {
+	/* display: flex;
+	justify-content: center;
+	align-items: center; */
+/* overflow: hidden; */
+	height: 100%;
+	min-width: 400px;
+}
+.thumbnail img{
+	height: 100%;
+	width: auto;
+}

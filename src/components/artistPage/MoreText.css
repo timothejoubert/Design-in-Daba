@@ -8,13 +8,14 @@
 }
 .content-more-text{
 	display: flex;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 	flex-wrap: wrap;
 }
 .content-more-text > *{
 	width: 45%;
 	min-width: 350px;
-	margin: 15px 0;
+	max-width: 500px;
+	margin: 15px 20px 15px 0;
 }
 /* .content-more-text > *:not(:last-child){
 	margin-right: 20px;
@@ -33,6 +34,7 @@
 	.content-more-text > *{
 		width: 100%;
 		min-width: inherit;
+		max-width: inherit;
 	}
 }
 @media (max-width: 650px) { 
