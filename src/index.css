@@ -37,7 +37,7 @@ body{
   background-color: var(--light-color);
   color: var(--dark-color);
   font-family: "Lexend", sans-serif;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
 }
 h1, h2, h3{
   font-family: "Movement", sans-serif;
