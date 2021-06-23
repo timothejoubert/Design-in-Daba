@@ -12,8 +12,7 @@ function ContentArtistPage( { artistContent } ) {
 		<section className="container-content-artist">
 
 			<ArtistBanner artistContent={artistContent} />
-			<SelectedWork taglineSelected={artistContent.selected_work_tagline} artistGallery={artistContent.content}/>
-			<MoreText contentMoreText={artistContent.more_text_content} />
+			<SelectedWork contentMoreText={artistContent.more_text_content} taglineSelected={artistContent.selected_work_tagline} artistGallery={artistContent.content}/>
 			
 			<article className="keep-exploring">
 				<h3>Keep on exploring</h3>

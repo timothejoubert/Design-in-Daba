@@ -1,6 +1,7 @@
 .container-banner{
 	display: flex;
 	flex-wrap: wrap;
+	padding: 200px 0;
 }
 .container-img-banner{
 	width: 60%;

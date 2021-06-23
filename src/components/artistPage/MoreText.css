@@ -1,6 +1,8 @@
-.container-more-text{
-	padding: 200px 0;
-	margin: 0 100px;
+
+.container-titre-article{
+	text-align: center;
+	padding: 128px 16px;
+	background-color: #efefef;
 }
 .container-more-text h3{
 	font-size: 2em;

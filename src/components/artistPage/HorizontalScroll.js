@@ -1,85 +1,72 @@
-import React, { useRef, useState, useLayoutEffect, useCallback } from "react"
-import ResizeObserver from "resize-observer-polyfill"
-import {
-  motion,
-  useViewportScroll,
-  useTransform,
-  useSpring
-} from "framer-motion"
-import './HorizontalScroll.css';
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
 
+const TallOuterContainer = styled.div.attrs(({ dynamicHeight }) => ({
+  style: { height: `${dynamicHeight}px` }
+}))`
+  position: relative;
+  width: 100%;
+`;
 
+const StickyInnerContainer = styled.div`
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+`;
 
+const HorizontalTranslateContainer = styled.div.attrs(({ translateX }) => ({
+  style: { transform: `translateX(${translateX}px)` }
+}))`
+  position: absolute;
+  height: 100%;
+  will-change: transform;
+`;
 
-function HorizontalScroll({ artistGallery }) {
-  const scrollRef = useRef(null)
-  const ghostRef = useRef(null)
-  const [scrollRange, setScrollRange] = useState(0)
-  const [viewportW, setViewportW] = useState(0)
+const calcDynamicHeight = objectWidth => {
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  return objectWidth - vw + vh + 150;
+};
 
+const handleDynamicHeight = (ref, setDynamicHeight) => {
+  const objectWidth = ref.current.scrollWidth;
+  const dynamicHeight = calcDynamicHeight(objectWidth);
+  setDynamicHeight(dynamicHeight);
+};
 
-  useLayoutEffect(() => {
-    scrollRef && setScrollRange(scrollRef.current.scrollWidth)
-    console.log("setScrollRange ", scrollRange)
-  }, [scrollRef])
+const applyScrollListener = (ref, setTranslateX) => {
+  window.addEventListener("scroll", () => {
+    const offsetTop = -ref.current.offsetTop;
+    setTranslateX(offsetTop);
+  });
+};
 
+export default ({ children }) => {
+  const [dynamicHeight, setDynamicHeight] = useState(null);
+  const [translateX, setTranslateX] = useState(0);
 
-  const onResize = useCallback(entries => {
-    console.log("entries", entries)
-    for (let entry of entries) {
-      setViewportW(entry.contentRect.width)
-      //console.log("setViewportW ", entry.contentRect.width)
-    }
-  }, [])
+  const containerRef = useRef(null);
+  const objectRef = useRef(null);
 
-  useLayoutEffect(() => {
-    const resizeObserver = new ResizeObserver(entries => onResize(entries))
-    resizeObserver.observe(ghostRef.current)
-    return () => resizeObserver.disconnect()
-  }, [onResize])
+  const resizeHandler = () => {
+    handleDynamicHeight(objectRef, setDynamicHeight);
+  };
 
-
-  const { scrollYProgress } = useViewportScroll()
-  const transform = useTransform(
-    scrollYProgress,
-    [0.25, 0.7],
-    [0, -scrollRange + viewportW]
-  )
-  const physics = { damping: 15, mass: 0.1, stiffness: 65 }
-
-  const spring = useSpring(transform, physics)
-
+  useEffect(() => {
+    handleDynamicHeight(objectRef, setDynamicHeight);
+    window.addEventListener("resize", resizeHandler);
+    applyScrollListener(containerRef, setTranslateX);
+  }, []);
 
   return (
-	  <>
-			<div className="scroll-container">
-				<motion.section
-				ref={scrollRef}
-				style={{ x: spring }}
-				className="thumbnails-container"
-				>
-					<div className="thumbnails">
-
-						{artistGallery.map( (src, index) => (
-							<div  
-							className="container-block-img thumbnail" 
-							key={index}
-							>
-							<img
-								className="container-img-selected-work"
-								src={`${process.env.PUBLIC_URL}` + src.img}
-								alt={src.txt}
-							/>
-							<p>{src.txt}</p>
-							</div>
-						))}
-					</div>
-				</motion.section>
-				<div ref={ghostRef} style={{ height: scrollRange }} className="ghost" />
-			</div>
-			
-			</>
-		)
-		}
-
-export default HorizontalScroll;
+    <TallOuterContainer dynamicHeight={dynamicHeight}>
+      <StickyInnerContainer ref={containerRef}>
+        <HorizontalTranslateContainer translateX={translateX} ref={objectRef}>
+          {children}
+        </HorizontalTranslateContainer>
+      </StickyInnerContainer>
+    </TallOuterContainer>
+  );
+};

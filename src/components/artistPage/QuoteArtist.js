@@ -14,7 +14,6 @@ function QuoteArtist( { artistInfo }) {
 
 	useEffect( () => {
 		split = new Splitting({ target: "[data-splitting]", by: 'chars' });
-		//console.log("split", split, artistInfo.quote);
 	});
 	
 	const descrObj = {
@@ -36,7 +35,7 @@ function QuoteArtist( { artistInfo }) {
 	return (
 	<section className="container-heading">
 		<article className="container-quote">
-			<blockquote data-splitting dangerouslySetInnerHTML={descrObj}></blockquote>
+			<blockquote data-splitting >{quote}</blockquote>
 
 			<div className="colors-panel-country">
 				
