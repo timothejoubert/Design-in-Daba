@@ -2,19 +2,15 @@ import React, { useState } from 'react';
 import './MainNav.css';
 import ArtistVisited from './ArtistVisited';
 
-function MainNav( { data, currentArtistPage, changeCountry, changeContent }) {
+function MainNav( { data, currentArtistPage, changeCountry }) {
 
 	let [openArtistNav, setOpenArtistNav] = useState(false);
 
-	if(changeContent != 0){
-		console.log("go");
-	}
 
 	const toggleArtistVisited = () => {
 		setOpenArtistNav(openArtistNav =! openArtistNav);
 	}
-
-	console.log("change page " + changeContent, openArtistNav);
+	console.log("change page ", openArtistNav);
 
   return (
 	  <>

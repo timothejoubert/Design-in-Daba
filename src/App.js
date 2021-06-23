@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import MainNav from './components/MainNav';
 import ArtistPage from './components/artistPage/ArtistPage';
 import './App.css';
@@ -23,23 +23,13 @@ function App() {
     return mainInfo
   }
 
-  let [mainData, initMainData] = useState(getCountriesVisited);
+  //let [mainData, initMainData] = useState(getCountriesVisited);
   let [currentPageData, initCurrentData] = useState(allData[0]);
-
-  
-  
-  //initMainData(getCountriesVisited);
   let [activeTransi, setActiveTransi] = useState(false);
 
-  let [changePage, setchangePage] = useState(0);
-
-  useEffect( ()=>{
-    setchangePage(0);
-  } )
 
   const updateData = (index) => {
     allData[index].visited = true
-    setchangePage(1);
 
     setTimeout(() => {
       setActiveTransi(true);
@@ -61,7 +51,7 @@ function App() {
   return (
     <div className="container-global" style={{ backgroundColor: currentPageData.main_color }}>
 
-      <MainNav changeCountry={updateData} data={allData} currentArtistPage={currentPageData} changeContent={changePage} />
+      <MainNav changeCountry={updateData} data={allData} currentArtistPage={currentPageData} />
       <ArtistPage artist={currentPageData} />
 
       <div ref={transiContainer} style={{ backgroundColor: currentPageData.main_color }} className={ activeTransi ? "transition-page-artist active-transi" : "transition-page-artist" } ></div>
