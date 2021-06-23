@@ -17,13 +17,18 @@ function HorizontalScroll({ artistGallery }) {
   const [scrollRange, setScrollRange] = useState(0)
   const [viewportW, setViewportW] = useState(0)
 
+
   useLayoutEffect(() => {
     scrollRef && setScrollRange(scrollRef.current.scrollWidth)
+    console.log("setScrollRange ", scrollRange)
   }, [scrollRef])
 
+
   const onResize = useCallback(entries => {
+    console.log("entries", entries)
     for (let entry of entries) {
       setViewportW(entry.contentRect.width)
+      //console.log("setViewportW ", entry.contentRect.width)
     }
   }, [])
 
@@ -33,14 +38,17 @@ function HorizontalScroll({ artistGallery }) {
     return () => resizeObserver.disconnect()
   }, [onResize])
 
+
   const { scrollYProgress } = useViewportScroll()
   const transform = useTransform(
     scrollYProgress,
-    [0, 1],
+    [0.25, 0.7],
     [0, -scrollRange + viewportW]
   )
-  const physics = { damping: 15, mass: 0.17, stiffness: 65 }
+  const physics = { damping: 15, mass: 0.1, stiffness: 65 }
+
   const spring = useSpring(transform, physics)
+
 
   return (
 	  <>

@@ -7,36 +7,36 @@ import { useEffect } from "react";
 
 function QuoteArtist( { artistInfo }) {
 
-	const colorsGradient = artistInfo.colors_gradient;
+	let colorsGradient = artistInfo.colors_gradient;
+	let quote = artistInfo.quote;
 
-	document.onreadystatechange = function () {
-		if (document.readyState === "complete") {
-			Splitting({ target: "[data-splitting]", by: 'words' });
+	let split;
+
+	useEffect( () => {
+		split = new Splitting({ target: "[data-splitting]", by: 'chars' });
+		//console.log("split", split, artistInfo.quote);
+	});
+	
+	const descrObj = {
+		__html: quote.replace(/(?:\r\n|\r|\n)/g, "<br>"),
+	  };
+
+	let style = (color) => {
+		return {
+		display : "inline-block",
+		width : "20px",
+		height : "20px",
+		margin : "5px",
+		borderRadius : "50%",
+		backgroundColor : color
 		}
-	  }
-
-	  let style = (color) => {
-		  return {
-			display : "inline-block",
-			width : "20px",
-			height : "20px",
-			margin : "5px",
-			borderRadius : "50%",
-			backgroundColor : color
-		  }
-	  }
-
-	  let go;
-	  useEffect(() => { 
-		go ="defef";
-	  });
+	}
 	  
 
 	return (
 	<section className="container-heading">
 		<article className="container-quote">
-			<p>{go}</p>
-			<blockquote data-splitting>“{artistInfo.quote}”</blockquote>
+			<blockquote data-splitting dangerouslySetInnerHTML={descrObj}></blockquote>
 
 			<div className="colors-panel-country">
 				

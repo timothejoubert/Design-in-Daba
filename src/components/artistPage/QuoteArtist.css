@@ -12,32 +12,54 @@
 	max-width: 1000px;
 }
 .container-quote blockquote{
-	font-size: 2.3em;
-	white-space: pre-line;
-}
-.container-quote blockquote span{
 	font-family: "Movement";
+	font-size: 35px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	/* white-space: pre; */
+	/* width: 795px; */
+	margin: 0 auto;
+	user-select: none;
+}
+.container-quote blockquote .whitespace{
+	display: inline-block;
+	width: 10px;
+}
+.container-quote blockquote .char{
 	font-variation-settings: "wght" 700, "SPAC" 100;
-	animation: movement-anim 3s infinite alternate ease-in-out;
-	animation-delay: calc(-200ms * var(--word-index));
+	animation: movement-anim 6s infinite alternate;
+	animation-delay: calc(50ms * var(--char-index));
 	white-space: nowrap;
 }
-
 @keyframes movement-anim{
 	0%{
-		font-variation-settings: "wght" 700, "SPAC" 100;
-	}
-	30%{
-		font-variation-settings: "wght" 700, "SPAC" 100;
-		color: #3a3939
-	}
-	70%{
 		font-variation-settings: "wght" 900, "SPAC" 120;
-		color: #333333
+		color: #333333;
+		transform: translate(0px, 0px);
+	}
+	40%{
+		font-variation-settings: "wght" 900, "SPAC" 120;
+		color: #333333;
+		transform: translate(5px, 5px);
+	}
+	50%{
+		font-variation-settings: "wght" 700, "SPAC" 120;
+		color: #333333a2;
+		transform: translate(0px, 0px);
+	}
+	60%{
+		font-variation-settings: "wght" 600, "SPAC" 120;
+		color: #333333a2;		
+		transform: translate(0px, 0px);
 	}
 	100%{
-		font-variation-settings: "wght" 900, "SPAC" 120;
+		font-variation-settings: "wght" 600, "SPAC" 120;
+		color: #333333a2;
+		transform: translate(0px, 0px);
 	}
+
 }
 .colors-panel-country{
 	margin: 30px 0;
@@ -76,5 +98,10 @@
 	}
 	.container-quote blockquote{
 		font-size: 1.6em;
+	}
+}
+@media (max-width: 500px) { 
+	.container-quote blockquote{
+		font-size: 1.2em;
 	}
 }

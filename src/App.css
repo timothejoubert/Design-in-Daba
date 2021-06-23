@@ -1,14 +1,34 @@
 .transition-page-artist{
 	position: fixed;
 	z-index: 8;
+	top: 100vh;
+	right: 0;
 	bottom: 0;
 	left: 0;
-	width: 100%;
-	height: 0;
-	transition: height 500ms, bottom 500ms 700ms;
-	background-color: var(--bg-color);
+	transform-origin: center;
+	/*transform: rotate(4deg);*/
+	/* transition: transform 200ms, height 500ms, bottom 700ms 500ms; */
 }
-.active-transi{
-	height: 100vh;
-	bottom: 100vh;
+.active-transi.transition-page-artist{
+	animation: transi-page 1500ms;
+}
+@keyframes transi-page{
+	0%{
+		top: 100vh;
+	}
+	50%{
+		top: 0vh;
+	}
+	100%{
+		top: 100vh;
+	}
+}
+
+.inside-container-transi{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100px;
+	transition: height 500ms;
 }

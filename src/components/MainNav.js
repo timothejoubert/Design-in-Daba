@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import './MainNav.css';
 import ArtistVisited from './ArtistVisited';
+import './MainNav.css';
 
-function MainNav( { data, currentArtistPage, changeCountry }) {
+function MainNav( { data, changeCountry, newColor }) {
 
 	let [openArtistNav, setOpenArtistNav] = useState(false);
-
 
 	const toggleArtistVisited = () => {
 		setOpenArtistNav(openArtistNav =! openArtistNav);
 	}
-	console.log("change page ", openArtistNav);
+
+	console.log("change page ", openArtistNav, newColor);
 
   return (
 	  <>
-		<nav className="main-nav" style={{ backgroundColor: currentArtistPage.main_color }}>
+		<nav className="main-nav" style={{ backgroundColor: newColor }}>
 
 			<div className="artist-dropdown">
 				

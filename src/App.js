@@ -9,52 +9,55 @@ function App() {
   let [allData, initData] = useState(contriesData);
   const transiContainer = useRef(null)
 
-  const getCountriesVisited = () => {
-    let mainInfo = [];
-    allData.forEach( (items) => {
-      const country = {
-        name: items.country,
-        main_color: items.main_color,
-        colors_gradient: items.colors_gradient,
-        visited: items.visited
-      };
-      mainInfo.push(country);
-    })
-    return mainInfo
-  }
+  // const getCountriesVisited = () => {
+  //   let mainInfo = [];
+  //   allData.forEach( (items) => {
+  //     const country = {
+  //       name: items.country,
+  //       main_color: items.main_color,
+  //       colors_gradient: items.colors_gradient,
+  //       visited: items.visited
+  //     };
+  //     mainInfo.push(country);
+  //   })
+  //   return mainInfo
+  // }
 
   //let [mainData, initMainData] = useState(getCountriesVisited);
   let [currentPageData, initCurrentData] = useState(allData[0]);
   let [activeTransi, setActiveTransi] = useState(false);
+  let [newColorBg, setNewColorBG] = useState(allData[0].main_color);
 
 
   const updateData = (index) => {
-    allData[index].visited = true
+    allData[index].visited = true;
 
+    setNewColorBG(allData[index].main_color);
+    setActiveTransi(true);
+
+    //wait animation transi to update data
     setTimeout(() => {
-      setActiveTransi(true);
       initCurrentData(allData[index]);
-    }, 100);
-
-    setTimeout(() => {
       initData(allData);
-    }, 500);
+      window.scrollTo(0, 0);
+    }, 750);
 
+    //remove class transition
     setTimeout(() => {
       setActiveTransi(false);
-    }, 2000);
+    }, 1500);
 
   }
 
- 
-
   return (
-    <div className="container-global" style={{ backgroundColor: currentPageData.main_color }}>
+    <div className="container-global" style={{ backgroundColor:  currentPageData.main_color}} >
 
-      <MainNav changeCountry={updateData} data={allData} currentArtistPage={currentPageData} />
+      <MainNav changeCountry={updateData} data={allData} newColor={newColorBg} />
       <ArtistPage artist={currentPageData} />
 
-      <div ref={transiContainer} style={{ backgroundColor: currentPageData.main_color }} className={ activeTransi ? "transition-page-artist active-transi" : "transition-page-artist" } ></div>
+      <div ref={transiContainer} style={{ backgroundColor: newColorBg }} className={ activeTransi ? "transition-page-artist active-transi" : "transition-page-artist" } >
+        <div  style={{ backgroundColor: newColorBg }} className="inside-container-transi"></div>
+      </div>
     </div>
   );
 
