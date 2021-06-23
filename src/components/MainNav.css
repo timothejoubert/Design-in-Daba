@@ -10,7 +10,9 @@
 	width: 100%;
 	background-color: var(--bg-color);
 }
-
+.main-nav p, .main-nav li{
+	user-select: none;
+}
 
 /* Artist */
 .artist-dropdown{

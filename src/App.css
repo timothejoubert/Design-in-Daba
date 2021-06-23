@@ -1,4 +1,14 @@
-.container-global{
-	--bg-color: #F4EC57;
+.transition-page-artist{
+	position: fixed;
+	z-index: 8;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	transition: height 500ms, bottom 500ms 700ms;
 	background-color: var(--bg-color);
+}
+.active-transi{
+	height: 100vh;
+	bottom: 100vh;
 }

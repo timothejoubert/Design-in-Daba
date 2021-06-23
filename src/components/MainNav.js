@@ -2,14 +2,19 @@ import React, { useState } from 'react';
 import './MainNav.css';
 import ArtistVisited from './ArtistVisited';
 
-function MainNav( { data, currentArtistPage }) {
+function MainNav( { data, currentArtistPage, changeCountry, changeContent }) {
 
+	let [openArtistNav, setOpenArtistNav] = useState(false);
 
-	let [artistVisited, initArtistVisited] = useState(false);
+	if(changeContent != 0){
+		console.log("go");
+	}
 
 	const toggleArtistVisited = () => {
-		initArtistVisited(artistVisited =! artistVisited);
+		setOpenArtistNav(openArtistNav =! openArtistNav);
 	}
+
+	console.log("change page " + changeContent, openArtistNav);
 
   return (
 	  <>
@@ -30,12 +35,12 @@ function MainNav( { data, currentArtistPage }) {
 						<circle cx="1.76471" cy="18.2353" r="1.76471" fill="#2D2D2D"/>
 					</svg>
 					<p>Artist</p>
-					<svg style={{ transform: !artistVisited? 'rotate(180deg)' : 'rotate(0deg)' }} width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg style={{ transform: !openArtistNav? 'rotate(180deg)' : 'rotate(0deg)' }} width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M1.41 0.589966L6 5.16997L10.59 0.589966L12 1.99997L6 7.99997L0 1.99997L1.41 0.589966Z" fill="#2D2D2D"/>
 					</svg>
 				</div>
 
-				<ArtistVisited open={artistVisited} data={data} />
+				<ArtistVisited open={openArtistNav} data={data} changeCountry={changeCountry} />
 
 			</div>
 

@@ -3,6 +3,7 @@ import "splitting/dist/splitting-cells.css";
 import Splitting from "splitting";
 
 import './QuoteArtist.css';
+import { useEffect } from "react";
 
 function QuoteArtist( { artistInfo }) {
 
@@ -25,16 +26,22 @@ function QuoteArtist( { artistInfo }) {
 		  }
 	  }
 
+	  let go;
+	  useEffect(() => { 
+		go ="defef";
+	  });
+	  
+
 	return (
 	<section className="container-heading">
 		<article className="container-quote">
+			<p>{go}</p>
 			<blockquote data-splitting>“{artistInfo.quote}”</blockquote>
 
 			<div className="colors-panel-country">
 				
 				{colorsGradient.map((color, index) => (
 					<span style={ style(color)} key={index} ></span>
-					
 				))}
 				
 			</div>
