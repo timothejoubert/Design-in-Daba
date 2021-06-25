@@ -5,3 +5,8 @@
 .container-cards img{
 	width: 100%;
 }
+@media (max-width: 650px) { 
+	.gallery-container {
+		margin: 50px 20px;
+	}
+}
