@@ -1,33 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import styled from "styled-components";
+import './HorizontalScroll.css'
 
-const TallOuterContainer = styled.div.attrs(({ dynamicHeight }) => ({
-  style: { height: `${dynamicHeight}px` }
-}))`
-  position: relative;
-  width: 100%;
-`;
-
-const StickyInnerContainer = styled.div`
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  overflow-x: hidden;
-`;
-
-const HorizontalTranslateContainer = styled.div.attrs(({ translateX }) => ({
-  style: { transform: `translateX(${translateX}px)` }
-}))`
-  position: absolute;
-  height: 100%;
-  will-change: transform;
-`;
 
 const calcDynamicHeight = objectWidth => {
   const vw = window.innerWidth;
   const vh = window.innerHeight;
-  return objectWidth - vw + vh + 150;
+  return objectWidth - vw + vh ;
 };
 
 const handleDynamicHeight = (ref, setDynamicHeight) => {
@@ -43,7 +21,7 @@ const applyScrollListener = (ref, setTranslateX) => {
   });
 };
 
-export default ({ children }) => {
+const HorizontalScroll = ({ artistGallery }) => {
   const [dynamicHeight, setDynamicHeight] = useState(null);
   const [translateX, setTranslateX] = useState(0);
 
@@ -54,19 +32,40 @@ export default ({ children }) => {
     handleDynamicHeight(objectRef, setDynamicHeight);
   };
 
+  function handleImageLoaded() {
+    resizeHandler();
+  }
+  
+
   useEffect(() => {
     handleDynamicHeight(objectRef, setDynamicHeight);
     window.addEventListener("resize", resizeHandler);
     applyScrollListener(containerRef, setTranslateX);
   }, []);
 
+  const SampleCards = ({artistGallery}) => 
+    
+    artistGallery.map((obj, i) => 
+    ( 
+      <div className="container-card" key={`sampleCard-${i}`}>
+        <img src={artistGallery[i].img} className="img-gallery" onLoad={handleImageLoaded} alt={artistGallery[i].txt}/>
+        <p>{artistGallery[i].txt}</p>
+      </div>
+    )
+ 
+    );
+  
   return (
-    <TallOuterContainer dynamicHeight={dynamicHeight}>
-      <StickyInnerContainer ref={containerRef}>
-        <HorizontalTranslateContainer translateX={translateX} ref={objectRef}>
-          {children}
-        </HorizontalTranslateContainer>
-      </StickyInnerContainer>
-    </TallOuterContainer>
+    <div dynamiceight={dynamicHeight} style={{ height: `${dynamicHeight}px` }}>
+      <div ref={containerRef} className="sticky-container">
+        <div className="horizontal-scroll-container" translatex={translateX} ref={objectRef} style={{ transform: `translateX(${translateX}px)` }}>
+          <div className="container-cards">
+            <SampleCards artistGallery={artistGallery} />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
+
+export default HorizontalScroll;

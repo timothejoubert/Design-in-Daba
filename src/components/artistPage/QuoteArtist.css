@@ -39,17 +39,17 @@
 		color: #333333;
 		transform: translate(0px, 0px);
 	}
-	40%{
+	50%{
 		font-variation-settings: "wght" 900, "SPAC" 120;
 		color: #333333;
 		transform: translate(5px, 5px);
 	}
-	50%{
+	70%{
 		font-variation-settings: "wght" 700, "SPAC" 120;
 		color: #333333a2;
 		transform: translate(0px, 0px);
 	}
-	60%{
+	80%{
 		font-variation-settings: "wght" 600, "SPAC" 120;
 		color: #333333a2;		
 		transform: translate(0px, 0px);
@@ -92,7 +92,12 @@
 
 
 @media (max-width: 650px) { 
+	.container-heading{
+		height: 100%;
+		min-height: 100vh;
+	}
 	.container-quote{
+		top: 100px;
 		width: 100%;
 		padding: 0 20px;
 	}

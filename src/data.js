@@ -41,6 +41,30 @@ export default function getCountriesData() {
 				{
 				img: "img-banner-7.png",
 				txt: "description de l'image",
+				},
+				{
+				img: "img-banner-2.png",
+				txt: "description de l'image",
+				},
+				{
+				img: "img-banner-3.jpg",
+				txt: "description de l'image",
+				},		
+				{
+				img: "img-banner-4.jpg",
+				txt: "description de l'image",
+				},		
+				{
+				img: "img-banner-5.png",
+				txt: "description de l'image",
+				},		
+				{
+				img: "img-banner-6.jpg",
+				txt: "description de l'image",
+				},		
+				{
+				img: "img-banner-7.png",
+				txt: "description de l'image",
 				}
 			],
 
@@ -53,7 +77,7 @@ export default function getCountriesData() {
 		{
 			country: "Angola",
 			artist: "Louis Houenoudel",
-			quote: "efeihbfilerhfni",
+			quote: "Citation artiste 2",
      		main_color: "#74A4DD",
 			colors_gradient : [
 				"#EEC050",
@@ -103,7 +127,7 @@ export default function getCountriesData() {
 		{
 			country: "Benin",
 			artist: "Louis Houenoudel",
-			quote: "Citation 2 Louis Houenoude lives in the small village of Heve, just outside Grand-Popo",
+			quote: "Citation 3 Louis Houenoude lives in the small village of Heve, just outside Grand-Popo",
      		main_color: "#74D7DD",
 			colors_gradient : [
 				"#EEC050",

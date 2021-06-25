@@ -1,7 +1,7 @@
 .container-banner{
 	display: flex;
 	flex-wrap: wrap;
-	padding: 200px 0;
+	padding: 200px 50px;
 }
 .container-img-banner{
 	width: 60%;
@@ -29,6 +29,11 @@
 .keep-exploring h3{
 	font-size: 2em;
     margin-bottom: 100px;
+}
+@media (max-width: 1000px) { 
+	.container-banner{
+		padding: 200px 0px;
+	}
 }
 
 

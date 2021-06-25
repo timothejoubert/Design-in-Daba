@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ArtistVisited from './ArtistVisited';
 import './MainNav.css';
 
 function MainNav( { data, changeCountry, newColor }) {
-
 	let [openArtistNav, setOpenArtistNav] = useState(false);
 
-	const toggleArtistVisited = () => {
-		setOpenArtistNav(openArtistNav =! openArtistNav);
-	}
-
-	console.log("change page ", openArtistNav, newColor);
+	let changePage = false;
+	
+	useEffect(() => {
+		if(changePage){
+			setOpenArtistNav(false)
+		}
+	}, [changePage])
 
   return (
 	  <>
@@ -18,7 +19,7 @@ function MainNav( { data, changeCountry, newColor }) {
 
 			<div className="artist-dropdown">
 				
-				<div className="artist-dropdown-btn" onClick={toggleArtistVisited}>
+				<div className="artist-dropdown-btn" onClick={() => setOpenArtistNav(openArtistNav =! openArtistNav)}>
 					<svg className="grid-btn-svg" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<circle cx="1.76471" cy="1.76471" r="1.76471" fill="#2D2D2D"/>
 						<circle cx="9.99908" cy="1.76471" r="1.76471" fill="#2D2D2D"/>
@@ -31,7 +32,7 @@ function MainNav( { data, changeCountry, newColor }) {
 						<circle cx="1.76471" cy="18.2353" r="1.76471" fill="#2D2D2D"/>
 					</svg>
 					<p>Artist</p>
-					<svg style={{ transform: !openArtistNav? 'rotate(180deg)' : 'rotate(0deg)' }} width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg style={{ transform: openArtistNav ? 'rotate(0deg)' : 'rotate(180deg)' }} width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M1.41 0.589966L6 5.16997L10.59 0.589966L12 1.99997L6 7.99997L0 1.99997L1.41 0.589966Z" fill="#2D2D2D"/>
 					</svg>
 				</div>

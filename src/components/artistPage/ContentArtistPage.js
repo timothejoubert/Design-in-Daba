@@ -1,6 +1,5 @@
 import ArtistBanner from "./ArtistBanner";
 import SelectedWork from "./SelectedWork";
-import MoreText from "./MoreText";
 
 import './ContentArtistPage.css';
 

@@ -1,86 +1,69 @@
-.scroll-container {
-	margin-top: 50px;
-	position: relative;
-	/* overflow-x: hidden; */
-	/* left: 0;
-	right: 0;*/
-	will-change: transform; 
-}
-.ghost {
-    width: 100vw;
-}
-.thumbnails-container {
+.sticky-container{
 	position: sticky;
-	top: 150px;
-	height: 70vh;
-	width: max-content;
-	/* width: 100%; */
-	display: flex;
-	align-items: flex-start;
-	padding: 0px 160px;
-}  
-.thumbnails {
-    position: relative;
-    display: flex;
-	align-items: flex-start;
-	height: 100%;
+	top: 0;
+	height: 100vh;
+	width: 100%;
+	overflow-x: hidden;
 }
-.thumbnails > * {
-	margin-right: 45px;
-}
-
-.thumbnails > .container-block-img:first-child {
-	/* padding-left: 50vw; */
-}
-.thumbnails > .container-block-img:last-child {
-	/* padding-right: 20vw; */
-}
-.thumbnail {
+.TallOuterContainer{
 	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100%;
-	/* min-width: 400px; */
+	width: 100%;
 }
-.thumbnail p{
+.horizontal-scroll-container{
 	position: absolute;
-	left: 0;
-	bottom: -30px;
-}
-.thumbnail img{
-	display: block;
 	height: 100%;
-	width: auto;
+	will-change: transform;
 }
-
-@media (max-width: 900px) { 
-	.thumbnails-container{
-		height: 50vh;
-	}
-	.thumbnail{
-		min-width: inherit;
-	}
-}
-
-
-.wrapper-stickyroll{
-	height: 500vh;
-}
-.stickyroll-content {
-    position: sticky;
+.container-cards{
+	position: relative;
+	height: 100%;
+	padding: 0 0 0 50px;
 	display: flex;
-    top: 150px;
+	flex-flow: row nowrap;
+	justify-content: flex-start;
+	align-items: center;
+}
+.container-card{
+	position: relative;
 	height: 60vh;
-	margin-top: 50px;
-    /* height: calc(100vh - 150px); */
-	/* transition: transform 200ms; */
-	transform: translate3d( calc(-100% * var(--progress)), 0, 0 );
+	width: auto;
+	background-color: #111f30;
+	margin-right: 75px;
+	flex-shrink: 0;
 }
-.container-block-img.thumbnail{
+.container-card img{
 	height: 100%;
 }
-.container-block-img.thumbnail img{
-	height: 100%;
-	/* margin: 0 50px */
+.container-selected-work{
+	position: relative;
+	margin-top: 150px;
 }
+.title-selected-work{
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+}
+.title-selected-work h3{
+	font-size: 2em;
+	margin-bottom: 20px;
+}
+
+
+
+
+@media (max-width: 650px) { 
+	.title-selected-work{
+		width: 100%;
+		padding: 0 20px;
+	}
+	.container-card{
+		height: 40vh;
+	}
+	.container-more-text{
+		margin: 0 20px;
+	}
+	.content-more-text{
+		padding: 0px 20px;
+	}
+}
+

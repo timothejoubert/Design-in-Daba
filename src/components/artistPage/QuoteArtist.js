@@ -3,22 +3,14 @@ import "splitting/dist/splitting-cells.css";
 import Splitting from "splitting";
 
 import './QuoteArtist.css';
-import { useEffect } from "react";
 
 function QuoteArtist( { artistInfo }) {
 
 	let colorsGradient = artistInfo.colors_gradient;
-	let quote = artistInfo.quote;
 
-	let split;
-
-	useEffect( () => {
-		split = new Splitting({ target: "[data-splitting]", by: 'chars' });
-	});
-	
-	const descrObj = {
-		__html: quote.replace(/(?:\r\n|\r|\n)/g, "<br>"),
-	  };
+	const quoteSplit = {
+		__html: Splitting.html( {content: " “ " + artistInfo.quote + " ” " , by: 'chars'} ),
+	};
 
 	let style = (color) => {
 		return {
@@ -31,11 +23,10 @@ function QuoteArtist( { artistInfo }) {
 		}
 	}
 	  
-
 	return (
 	<section className="container-heading">
 		<article className="container-quote">
-			<blockquote data-splitting >{quote}</blockquote>
+			<blockquote dangerouslySetInnerHTML={quoteSplit} ></blockquote>
 
 			<div className="colors-panel-country">
 				
