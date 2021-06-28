@@ -1,7 +1,9 @@
+.container-vertical-section{
+	padding-bottom: 20px;
+}
 .gallery-container{
 	margin: 50px;
 }
-
 .container-cards img{
 	width: 100%;
 }

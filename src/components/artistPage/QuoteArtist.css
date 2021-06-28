@@ -23,47 +23,76 @@
 	margin: 0 auto;
 	user-select: none;
 }
-.container-quote blockquote .whitespace{
-	/* display: inline-block; */
-	width: 10px;
-}
 .container-quote blockquote .char{
 	font-family: "Movement";
 	font-variation-settings: "wght" 600, "SPAC" 100;
+	letter-spacing: 1px;
+	color: #333333a2;
 	animation: movement-anim 6s infinite alternate;
 	animation-delay: calc(50ms * var(--char-index));
-	white-space: nowrap;
 }
+
 @keyframes movement-anim{
 	0%{
 		font-variation-settings: "wght" 600, "SPAC" 100;
 		letter-spacing: 1px;
-		color: #333333;
-		/* transform: translate(0px, 0px); */
-	}
-	50%{
-		font-variation-settings: "wght" 900, "SPAC" 120;
-		letter-spacing: 0px;
-		color: #333333;
-		/* transform: translate(5px, 5px); */
-	}
-	70%{
-		font-variation-settings: "wght" 700, "SPAC" 100;
-		letter-spacing: 1px;
 		color: #333333a2;
-		/* transform: translate(0px, 0px); */
 	}
-	80%{
+	20%{
 		font-variation-settings: "wght" 600, "SPAC" 100;
 		letter-spacing: 1px;
-		color: #333333a2;		
-		/* transform: translate(0px, 0px); */
+		transform: translate(0px, 0px);
+		transform: scale(1);
+
+		color: #333333a2;
+	}
+	30%{
+		font-variation-settings: "wght" 900, "SPAC" 120;
+		letter-spacing: 0px;
+		transform: translate(3px, 3px);
+		transform: scale(1.05);
+		color: #333333;
+	}
+	40%{
+		font-variation-settings: "wght" 600, "SPAC" 100;
+		letter-spacing: 1px;
+		transform: translate(0px, 0px);
+		transform: scale(1);
+
+		color: #333333a2;
 	}
 	100%{
 		font-variation-settings: "wght" 600, "SPAC" 100;
 		letter-spacing: 1px;
 		color: #333333a2;
-		/* transform: translate(0px, 0px); */
+	}
+
+}
+.container-quote blockquote .char::after{
+	visibility: visible;
+	-webkit-text-stroke-width: 0px;
+	-webkit-text-stroke-color: rgba(255, 255, 255, 0.322);
+	-webkit-text-fill-color: transparent;
+	z-index: -5;
+
+	animation: movement-anim-after 6s infinite alternate;
+	animation-delay: calc(50ms * var(--char-index));
+}
+@keyframes movement-anim-after{
+	0%{
+	-webkit-text-stroke-width: 0px;
+	}
+	20%{
+	-webkit-text-stroke-width: 0px;
+	}
+	30%{
+		-webkit-text-stroke-width: 5px;
+	}
+	40%{
+	-webkit-text-stroke-width: 0px;
+	}
+	100%{
+	-webkit-text-stroke-width: 0px;
 	}
 
 }

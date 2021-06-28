@@ -8,7 +8,7 @@ import './SelectedWork.css';
 
 const SelectedWork = ({ contentMoreText, artistGallery }) => (
   <>
-  <article>
+  <article className="container-selected-work">
     <div className="container-titre-section">
           <h2>Selected work</h2>
     </div>
@@ -23,7 +23,7 @@ const SelectedWork = ({ contentMoreText, artistGallery }) => (
 	  
 	</article>
 
-	<article>
+	<article className="container-more-text">
 		<div className="container-titre-section">
 			<h2>A few more text</h2>
 		</div>

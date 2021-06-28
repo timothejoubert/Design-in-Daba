@@ -4,26 +4,37 @@
 	width: 100%;
 	min-height: 100vh;
 }
-
-.container-titre-section{ 
+.container-selected-work{
+	background-color: black;
+}
+.container-selected-work h2{
+	color: white;
 	text-align: center;
-	padding: 100px 16px;
-	background-color: #efefef;
+	padding: 70px 0 20px 0;
+}
+.container-titre-section h2{
+	font-size: 2em;
 }
 
 
-
-
 /* more content section */
-
+.container-more-text{
+	margin: 200px 0 210px 0;
+}
+.container-more-text h2{
+	padding: 0 50px;
+	margin: 75px auto 20px auto;
+	max-width: 1500px;
+}
 .content-more-text{
 	display: flex;
 	justify-content: space-between;
 	flex-wrap: wrap;
 	padding: 0 50px;
-	margin: 75px auto;
+	margin: 0 auto;
 	max-width: 1500px;
 }
+
 .container-more-text h3{
 	font-size: 2em;
 	margin-bottom: 30px;

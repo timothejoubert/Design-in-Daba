@@ -13,10 +13,26 @@
 	flex: 1;
 }
 .about-item{
-	text-align: right;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.container-about-item{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+.about-item li{
+	cursor: pointer;
 }
 .main-nav p, .main-nav li{
 	user-select: none;
+}
+.about-open .artist-dropdown-btn svg circle, .about-open .artist-dropdown-btn path{
+	fill: var(--light-color);
+}
+.about-open .artist-dropdown p, .about-open .container-logo h1, .about-open .container-logo h2, .about-open .about-item li{
+	color: white;
 }
 
 /* Artist */
@@ -51,12 +67,41 @@
 
 
 /* about */
-
+.close-about-btn{
+	position: relative;
+	display: block;
+	padding-left: 14px;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+}
+.close-about-btn::after{
+	position: absolute;
+	content: '';
+	height: 100%;
+	width: 2px;
+	background-color: white;
+	transform: rotate(45deg);
+}
+.close-about-btn::before{
+	position: absolute;
+	content: '';
+	height: 100%;
+	width: 2px;
+	background-color: white;
+	transform: rotate(-45deg);
+}
 
 
 @media (max-width: 650px) { 
 	.main-nav{
 		justify-content: center;
+	}
+	.main-nav h1{
+		font-size: 1.5em;
+	}
+	.main-nav h2{
+		font-size: 0.9em;
 	}
 	.artist-dropdown, .about-item{
 		display: none;
