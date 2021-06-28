@@ -5,21 +5,37 @@
 
 @font-face {
   font-family: "Movement";
-  src: url('./fonts/MovementV.ttf') format(truetype);
+  src: url('./fonts/MovementV.ttf') format('truetype');
+  font-weight: 100 900;
 }
 @font-face {
+  font-family: "Movement";
+  src: url('./fonts/Movement-IndirectThin.otf') format('truetype'),
+       url('./fonts/Movement-IndirectThin.woff') format('woff');
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Movement";
+  src: url('./fonts/Movement-DirectBlack.otf') format('truetype'),
+        url('./fonts/Movement-DirectBlack.woff') format('woff')
+  ;
+  font-weight: 800;
+}
+
+
+@font-face {
   font-family: "Lexend";
-  src: url('./fonts/Lexend-Light.ttf') format(truetype);
+  src: url('./fonts/Lexend-Light.ttf') format('truetype');
   font-weight: 200;
 }
 @font-face {
   font-family: "Lexend";
-  src: url('./fonts/Lexend-Regular.ttf') format(truetype);
+  src: url('./fonts/Lexend-Regular.ttf') format('truetype');
   font-weight: 400;
 }
 @font-face {
   font-family: "Lexend";
-  src: url('./fonts/Lexend-Bold.ttf') format(truetype);
+  src: url('./fonts/Lexend-Bold.ttf') format('truetype');
   font-weight: 600;
 }
 
