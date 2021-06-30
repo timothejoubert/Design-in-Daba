@@ -8,7 +8,6 @@ import contriesData from './data.js';
 
 
 function App() {
-
   let [allData, initData] = useState(contriesData);
   const transiContainer = useRef(null)
 
@@ -39,11 +38,6 @@ function App() {
     setOpenArtistNav(openArtistNav =! openArtistNav);
   }
 
-  useEffect(() => {
-    setAboutOpen(false);
-    setOpenArtistNav(false);
-  }, [setOpenArtistNav, setAboutOpen] )
-
   // const getCountriesVisited = () => {
   //   let mainInfo = [];
   //   allData.forEach( (items) => {
@@ -59,13 +53,23 @@ function App() {
   // }
 
   //let [mainData, initMainData] = useState(getCountriesVisited);
-  let [currentPageData, initCurrentData] = useState(allData[0]);
+  let [currentIndex, setCurrentIndex] = useState(0);
+  let [currentPageData, initCurrentData] = useState(allData[currentIndex]);
   let [activeTransi, setActiveTransi] = useState(false);
-  let [newColorBg, setNewColorBG] = useState(allData[0].main_color);
+  let [newColorBg, setNewColorBG] = useState(allData[currentIndex].main_color);
+  let [colorTheme, setColorTheme] = useState(allData[currentIndex].dark_theme);
 
+  useEffect(() => {
+    setAboutOpen(false);
+    setOpenArtistNav(false);
+    document.title = `Design Indaba | ${allData[currentIndex].country} - ${allData[currentIndex].artist}`;
+    allData[currentIndex].visited = true;
+    initCurrentData(currentPageData);
+  }, [setOpenArtistNav, setAboutOpen, currentIndex] )
 
   const updateData = (index) => {
-    allData[index].visited = true;
+    
+    setCurrentIndex(index);
     setAboutOpen(false);
     setOpenArtistNav(false);
 
@@ -76,6 +80,7 @@ function App() {
     setTimeout(() => {
       initCurrentData(allData[index]);
       initData(allData);
+      setColorTheme(allData[index].dark_theme);
       window.scrollTo(0, 0);
     }, 750);
 
@@ -86,8 +91,22 @@ function App() {
 
   }
 
+  const changeGlobalStyle = () => {
+    if(aboutOpen){
+      if(colorTheme){
+        return "container-global about-open dark-theme";
+      }
+      return "container-global about-open";
+    }else{
+      if(colorTheme){
+        return "container-global dark-theme";
+      }
+      return "container-global";
+    }
+  }
+
   return (
-    <div className={aboutOpen ? "container-global about-open" : "container-global"} style={{ backgroundColor:  currentPageData.main_color}} >
+    <div className={changeGlobalStyle()} style={{ backgroundColor:  currentPageData.main_color}} >
 
       <MainNav changeCountry={updateData} data={allData} newColor={newColorBg} handleAbout={handleAbout} aboutOpenBool={aboutOpen} handleArtistNav={handleArtistNav} ArtistNavBool={openArtistNav}/>
       <ArtistPage artist={currentPageData} keepTopDistance={ aboutOpen ? scrollValue[scrollValue.length - 1] : null }/>

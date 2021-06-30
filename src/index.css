@@ -55,6 +55,9 @@ body{
   font-family: "Lexend", sans-serif;
   overflow-x: hidden;
 }
+.dark-theme {
+  color: var(--light-color);
+}
 h1, h2, h3{
   font-family: "Movement", sans-serif;
 }

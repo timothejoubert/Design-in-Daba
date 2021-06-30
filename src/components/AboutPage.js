@@ -42,6 +42,7 @@ function AboutPage() {
 			<div className="credit-name">
 				<h4>Design Indaba</h4>
 			</div>
+			
 		</div>
 	);
 }

@@ -34,6 +34,12 @@
 .about-open .artist-dropdown p, .about-open .container-logo h1, .about-open .container-logo h2, .about-open .about-item li{
 	color: white;
 }
+.dark-theme .artist-dropdown-btn svg circle, .dark-theme .artist-dropdown-btn path{
+	fill: var(--light-color);
+}
+.dark-theme .artist-dropdown p, .dark-theme .container-logo h1, .dark-theme .container-logo h2, .dark-theme .about-item li{
+	color: white;
+}
 
 /* Artist */
 .artist-dropdown{
