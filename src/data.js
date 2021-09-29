@@ -3,7 +3,7 @@ export default function getCountriesData() {
 		{
 			country: "Algeria",
 			artist: "Louis Houenoudel",
-			quote: "No color is more joyfull than yellow. <br> The color of sun, celebration and joy. <br> Yellow is associated with power,<br> the power embodied by the african woman.",
+			quote: "No color is more joyfull than yellow. The color of sun, celebration and joy. Yellow is associated with power, the power embodied by the african woman.",
      		main_color: "#F4EC57",
 			dark_theme: false,
 			colors_gradient : [
@@ -180,8 +180,8 @@ export default function getCountriesData() {
 		{
 			country: "Botswana",
 			artist: "Louis Houenoudel",
-			quote: "No color is more joyfull than yellow. <br> The color of sun, celebration and joy. <br> Yellow is associated with power,<br> the power embodied by the african woman.",
-     		main_color: "#DD74A4",
+			quote: "No color is more joyfull than yellow. The color of sun, celebration and joy. Yellow is associated with power, the power embodied by the african woman.",
+			main_color: "#DD74A4",
 			 dark_theme: false,
 			colors_gradient : [
 				"#EEC050",
@@ -231,8 +231,8 @@ export default function getCountriesData() {
 		{
 			country: "Burkina Faso",
 			artist: "Louis Houenoudel",
-			quote: "No color is more joyfull than yellow. <br> The color of sun, celebration and joy. <br> Yellow is associated with power,<br> the power embodied by the african woman.",
-     		main_color: "#DBDD74",
+			quote: "No color is more joyfull than yellow. The color of sun, celebration and joy. Yellow is associated with power, the power embodied by the african woman.",
+			main_color: "#DBDD74",
 			 dark_theme: false,
 			colors_gradient : [
 				"#EEC050",
@@ -282,8 +282,8 @@ export default function getCountriesData() {
 		{
 			country: "Burundi",
 			artist: "Louis Houenoudel",
-			quote: "No color is more joyfull than yellow. <br> The color of sun, celebration and joy. <br> Yellow is associated with power,<br> the power embodied by the african woman.",
-     		main_color: "#FFAE74",
+			quote: "No color is more joyfull than yellow. The color of sun, celebration and joy. Yellow is associated with power, the power embodied by the african woman.",
+			main_color: "#FFAE74",
 			 dark_theme: false,
 			colors_gradient : [
 				"#EEC050",
@@ -333,9 +333,9 @@ export default function getCountriesData() {
 		{
 			country: "Hello word",
 			artist: "Louis Houenoudel",
-			quote: "No color is more joyfull than yellow. <br> The color of sun, celebration and joy. <br> Yellow is associated with power,<br> the power embodied by the african woman.",
-     		main_color: "#9267ED",
-			 dark_theme: false,
+			quote: "No color is more joyfull than yellow. The color of sun, celebration and joy. Yellow is associated with power, the power embodied by the african woman.",
+			main_color: "#2c3e50",
+			 dark_theme: true,
 			colors_gradient : [
 				"#EEC050",
 				"#B81D18",
@@ -435,7 +435,7 @@ export default function getCountriesData() {
 		{
 			country: "Burundi",
 			artist: "Louis Houenoudel",
-			quote: "No color is more joyfull than yellow. <br> The color of sun, celebration and joy. <br> Yellow is associated with power,<br> the power embodied by the african woman.",
+			quote: "No color is more joyfull than yellow.   The color of sun, celebration and joy.   Yellow is associated with power,  the power embodied by the african woman.",
      		main_color: "#9267ED",
 			dark_theme: false,
 			colors_gradient : [
@@ -486,8 +486,8 @@ export default function getCountriesData() {
 		{
 			country: "Burundi",
 			artist: "Louis Houenoudel",
-			quote: "No color is more joyfull than yellow. <br> The color of sun, celebration and joy. <br> Yellow is associated with power,<br> the power embodied by the african woman.",
-     		main_color: "#9267ED",
+			quote: "No color is more joyfull than yellow.   The color of sun, celebration and joy.   Yellow is associated with power,  the power embodied by the african woman.",
+     		main_color: "#f7d794",
 			 dark_theme: false,
 			colors_gradient : [
 				"#EEC050",
@@ -537,8 +537,8 @@ export default function getCountriesData() {
 		{
 			country: "Burundi",
 			artist: "Louis Houenoudel",
-			quote: "No color is more joyfull than yellow. <br> The color of sun, celebration and joy. <br> Yellow is associated with power,<br> the power embodied by the african woman.",
-     		main_color: "#9267ED",
+			quote: "No color is more joyfull than yellow.   The color of sun, celebration and joy.   Yellow is associated with power,  the power embodied by the african woman.",
+     		main_color: "#778beb",
 			 dark_theme: false,
 			colors_gradient : [
 				"#EEC050",
@@ -588,58 +588,7 @@ export default function getCountriesData() {
 		{
 			country: "Burundi",
 			artist: "Louis Houenoudel",
-			quote: "No color is more joyfull than yellow. <br> The color of sun, celebration and joy. <br> Yellow is associated with power,<br> the power embodied by the african woman.",
-     		main_color: "#9267ED",
-			 dark_theme: false,
-			colors_gradient : [
-				"#EEC050",
-				"#B81D18",
-				"#E3BB0F",
-				"#A5E6FD"
-			],
-			visited: false,
-
-			banner_img: 'img-banner-1.jpg',
-			description: "Louis Houenoude lives in the small village of Heve, just outside Grand-Popo, in the small West African country of Benin. He used to paint barber shop signs for a living. But now he is a bona fide artist. An art gallery in Finland is exhibiting a series of portraits painted by Mr Houenoude. <br/><br/> The portrait series, called Bad Hair Day Leaders, consists of 14 portraits of today's world leaders, from Angela Merkel to Xi Jinping. Last year, Mr Houenoude painted a portrait of the Finnish President Sauli Niinisto which was bought by the Finland's Ministry of Foreign Affairs.",
-			
-			selected_work_tagline: "The portraits are a collaboration with Finnish visual artist Riiko Sakkinen, who visited Benin last year.",
-			content: [
-				{
-				img: "img-banner-2.png",
-				txt: "description de l'image",
-				},
-				{
-				img: "img-banner-3.jpg",
-				txt: "description de l'image",
-				},		
-				{
-				img: "img-banner-4.jpg",
-				txt: "description de l'image",
-				},		
-				{
-				img: "img-banner-5.png",
-				txt: "description de l'image",
-				},		
-				{
-				img: "img-banner-6.jpg",
-				txt: "description de l'image",
-				},		
-				{
-				img: "img-banner-7.png",
-				txt: "description de l'image",
-				}
-			],
-
-			more_text_content: [
-				"Louis Houenoude lives in the small village of Heve, just outside Grand-Popo, in the small West African country of Benin. He used to paint barber shop signs for a living. But now he is a bona fide artist. An art gallery in Finland is exhibiting a series of portraits painted by Mr Houenoude.",
-				"The portrait series, called Bad Hair Day Leaders, consists of 14 portraits of today's world leaders, from Angela Merkel to Xi Jinping. Last year, Mr Houenoude painted a portrait of the Finnish President Sauli Niinisto which was bought by the Finland's Ministry of Foreign Affairs.",
-				"The portrait series, called Bad Hair Day Leaders, consists of 14 portraits of today's world leaders, from Angela Merkel to Xi Jinping. Last year, Mr Houenoude painted a portrait of the Finnish President Sauli Niinisto which was bought by the Finland's Ministry of Foreign Affairs."
-			]
-		},
-		{
-			country: "Burundi",
-			artist: "Louis Houenoudel",
-			quote: "No color is more joyfull than yellow. The color of sun, celebration and joy. Yellow is associated with power, the power embodied by the african woman.",
+			quote: "No color is more joyfull than yellow.   The color of sun, celebration and joy.   Yellow is associated with power,  the power embodied by the african woman.",
      		main_color: "#9267ED",
 			 dark_theme: false,
 			colors_gradient : [
@@ -692,6 +641,57 @@ export default function getCountriesData() {
 			artist: "Louis Houenoudel",
 			quote: "No color is more joyfull than yellow. The color of sun, celebration and joy. Yellow is associated with power, the power embodied by the african woman.",
      		main_color: "#9267ED",
+			 dark_theme: false,
+			colors_gradient : [
+				"#EEC050",
+				"#B81D18",
+				"#E3BB0F",
+				"#A5E6FD"
+			],
+			visited: false,
+
+			banner_img: 'img-banner-1.jpg',
+			description: "Louis Houenoude lives in the small village of Heve, just outside Grand-Popo, in the small West African country of Benin. He used to paint barber shop signs for a living. But now he is a bona fide artist. An art gallery in Finland is exhibiting a series of portraits painted by Mr Houenoude. <br/><br/> The portrait series, called Bad Hair Day Leaders, consists of 14 portraits of today's world leaders, from Angela Merkel to Xi Jinping. Last year, Mr Houenoude painted a portrait of the Finnish President Sauli Niinisto which was bought by the Finland's Ministry of Foreign Affairs.",
+			
+			selected_work_tagline: "The portraits are a collaboration with Finnish visual artist Riiko Sakkinen, who visited Benin last year.",
+			content: [
+				{
+				img: "img-banner-2.png",
+				txt: "description de l'image",
+				},
+				{
+				img: "img-banner-3.jpg",
+				txt: "description de l'image",
+				},		
+				{
+				img: "img-banner-4.jpg",
+				txt: "description de l'image",
+				},		
+				{
+				img: "img-banner-5.png",
+				txt: "description de l'image",
+				},		
+				{
+				img: "img-banner-6.jpg",
+				txt: "description de l'image",
+				},		
+				{
+				img: "img-banner-7.png",
+				txt: "description de l'image",
+				}
+			],
+
+			more_text_content: [
+				"Louis Houenoude lives in the small village of Heve, just outside Grand-Popo, in the small West African country of Benin. He used to paint barber shop signs for a living. But now he is a bona fide artist. An art gallery in Finland is exhibiting a series of portraits painted by Mr Houenoude.",
+				"The portrait series, called Bad Hair Day Leaders, consists of 14 portraits of today's world leaders, from Angela Merkel to Xi Jinping. Last year, Mr Houenoude painted a portrait of the Finnish President Sauli Niinisto which was bought by the Finland's Ministry of Foreign Affairs.",
+				"The portrait series, called Bad Hair Day Leaders, consists of 14 portraits of today's world leaders, from Angela Merkel to Xi Jinping. Last year, Mr Houenoude painted a portrait of the Finnish President Sauli Niinisto which was bought by the Finland's Ministry of Foreign Affairs."
+			]
+		},
+		{
+			country: "Burundi",
+			artist: "Louis Houenoudel",
+			quote: "No color is more joyfull than yellow. The color of sun, celebration and joy. Yellow is associated with power, the power embodied by the african woman.",
+			main_color: "#546de5",
 			 dark_theme: false,
 			colors_gradient : [
 				"#EEC050",

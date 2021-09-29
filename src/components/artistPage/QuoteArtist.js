@@ -6,26 +6,229 @@ import Splitting from "splitting";
 
 import './QuoteArtist.css';
 
-function QuoteArtist( { artistInfo }) {
-	let colorsGradient = artistInfo.colors_gradient;
-	const svgCountryContainer = useRef(null);
+
+function QuoteAnim( {artistInfo} ){
+	
 	const [randomAnim, setRandomAnim] = useState();
 
 	const animRandom = () => {
 		const index = (Math.floor(Math.random() * 7)+1).toString();
-		const animValue = "anim-" + index;
+		const animValue = "anim-" + 7;
 		return animValue;
 	}
-	
-	useEffect(() => {
-		setRandomAnim(animRandom());
-		setCurrentCountryMap();
-	}, [artistInfo])
 
 	const quoteSplit = {
 		__html: Splitting.html( {content: " “ " + artistInfo.quote.replace(/(?:\r\n|\r|\n)/g, "<br>") + " ” " , by: 'chars'} ),
 	};
 
+	const styleAnim = (index) => {
+		return {
+			animationName : index,
+		}
+	}
+
+	useEffect(() => {
+		setRandomAnim(animRandom());
+	}, [artistInfo])
+	
+	return(
+		<blockquote className={randomAnim} style={styleAnim(randomAnim)} dangerouslySetInnerHTML={quoteSplit} ></blockquote>
+	)
+}
+
+function QuoteMouse( {artistInfo} ){
+	const animQuote = useRef(null);
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+	
+	let maxDist;
+	let mouse = { x: 0, y: 0 };
+	let cursor = {
+		x: window.innerWidth,
+		y: window.innerHeight
+	};
+
+	Math.dist = function(a, b) {
+		let dx = b.x - a.x;
+		let dy = b.y - a.y;
+		return Math.sqrt(Math.pow(dx, 2), Math.pow(dy, 2));
+	}
+
+	const getMousePos = (e) => { 
+		cursor.x = e.clientX;
+		cursor.y = e.clientY;
+	}
+	
+	let Char = function(container, char, i) {
+		let span = document.createElement("span");
+		span.setAttribute('data-char', char);
+		if(char == " "){
+			span.setAttribute('class', 'espace');
+		}
+		span.innerText = char;
+		container.appendChild(span);
+
+		this.getDist = function() {
+			this.pos = span.getBoundingClientRect();
+			let y = this.pos.x + (this.pos.width / 2) - mouse.x;
+    		let x = this.pos.y + (this.pos.height / 2) - mouse.y;
+			return Math.sqrt(x * x + y * y);
+		}
+		this.getMaxDistance = function(){
+			this.pos = span.getBoundingClientRect();
+
+			let a1 = 0 - this.pos.x + (this.pos.width / 2);
+			let b1 = 0 - this.pos.y + (this.pos.height / 2);
+			let dist1 = Math.sqrt(a1 * a1 + b1 * b1);
+
+			let a2 = window.innerWidth - this.pos.x + (this.pos.width / 2);
+			let b2 = 0 - this.pos.y + (this.pos.height / 2);
+			let dist2 = Math.sqrt(a2 * a2 + b2 * b2);
+
+			let a3 = 0 - this.pos.x + (this.pos.width / 2);
+			let b3 = document.documentElement.clientHeight - this.pos.y + (this.pos.height / 2);
+			let dist3 = Math.sqrt(a3 * a3 + b3 * b3);
+
+			let a4 = window.innerWidth - this.pos.x + (this.pos.width / 2);
+			let b4 = document.documentElement.clientHeight - this.pos.y + (this.pos.height / 2);
+			let dist4 = Math.sqrt(a4 * a4 + b4 * b4);
+			
+			return Math.max(dist1, dist2, dist3, dist4);
+		}
+		this.getAttr = function(dist, min, max) {
+			let wght = max - Math.abs((max * dist / maxDist));
+			return Math.max(min, wght + min);
+		}
+		this.map = function(value, x1, y1, x2, y2) {
+			return (value - x1) * (y2 - x2) / (y1 - x1) + x2;
+		}
+		this.update = function(args) {
+			let dist = this.getDist();
+			// this.wdth = args.wdth ? ~~this.getAttr(dist, 5, 200) : 100;
+			// this.alpha = args.alpha ? this.getAttr(dist, 0, 1).toFixed(2) : 1;
+			// this.ital = args.ital ? this.getAttr(dist, 0, 1).toFixed(2) : 0;
+			// this.grow = args.grow ? this.getAttr(dist, 0.8, 1) : 1;
+
+			this.wght = args.wght ? this.getAttr(dist, 200, 900) : 400;
+			// this.wght = args.wght ? this.map(dist, 0, this.getMaxDistance(), 900, 100) : 400;
+			
+			this.movement = args.movement ? this.getAttr(dist, 80, 140) : 120;
+			this.opacity = args.opacity ? this.getAttr(dist, 0.8, 1) : 1;
+			// this.movement = args.movement ?  this.map(dist, 0, this.getMaxDistance(), 120, 100) : 120;
+			this.draw();
+		}
+		
+		this.draw = function() {
+			let style = "";
+			style += "font-variation-settings: 'wght' " + this.wght + ", 'SPAC' " + this.movement + ";";	
+			style += "opacity: " + this.opacity + ";";	
+			span.style = style;
+		}
+		return this;
+	}
+	
+
+	let VFont = function() {
+		this.movement = true;
+		this.opacity = true;
+		this.weight = true;
+		this.spacing = false;
+		this.translate = false;
+
+		this.grow = false;
+		this.scale = false;
+		this.alpha = false;
+		this.width = false;
+		this.italic = false;
+		let title, str, chars = [];
+		let lines = [];
+		let line = {};
+		let word = {};
+		let wordIndex = 0; 
+
+		this.init = function() {
+			title = animQuote.current;			
+			str = title.innerText;
+			title.innerHTML = "";
+			line = document.createElement("div");
+
+			for (let i = 0; i < str.length; i++) {
+				if(str[i] == " " || i == 0){
+					if(windowWidth > 800 && wordIndex > 6 || windowWidth < 800 && wordIndex > 4){
+						line = document.createElement("div");
+						lines.push(line);
+						wordIndex = 0;
+					}
+					wordIndex++;
+					line.setAttribute('class', 'line');
+
+					word = document.createElement("div");
+					word.setAttribute('class', 'word');
+
+					line.appendChild(word);
+					title.appendChild(line);		
+				}
+				let _char = new Char(word, str[i]);
+				chars.push(_char);
+			}
+		}
+
+		this.animate = function() {
+			mouse.x += (cursor.x - mouse.x) / 4;
+			mouse.y += (cursor.y - mouse.y) / 4;
+			requestAnimationFrame(this.animate.bind(this));
+			this.render();
+		}
+
+		this.render = function() {
+			maxDist = title.getBoundingClientRect().width / 12;
+			for (let i = 0; i < chars.length; i++) {
+				chars[i].update({
+					wght: this.weight,
+					movement: this.movement,
+					spacing: this.spacing,
+					grow: this.grow,
+					translate: this.translate,
+					opacity: this.opacity
+				});
+			}
+		}
+		this.init();
+		this.animate();
+		return this;
+	}
+
+
+	const activeAnim = () => {
+		let height = document.documentElement.clientHeight;
+		let scroll = window.scrollY;
+		setWindowWidth(window.innerWidth)
+		//console.log(scroll < height);
+		return scroll < height
+	}
+
+	window.addEventListener("resize", activeAnim);
+	window.addEventListener("scroll", activeAnim);
+
+
+	useEffect(() => {
+		if(activeAnim()){
+			window.addEventListener("mousemove", getMousePos);
+		}
+		let quote = new VFont();
+		return () => {
+			window.removeEventListener("mousemove", getMousePos);
+		}
+	}, [artistInfo])
+
+	return(
+		<blockquote ref={animQuote}>{artistInfo.quote}</blockquote>
+	)
+}
+
+function QuoteArtist( { artistInfo }) {
+	let colorsGradient = artistInfo.colors_gradient;
+	const svgCountryContainer = useRef(null);
+	  
 	const styleGradient = (color) => {
 		return {
 		display : "inline-block",
@@ -36,18 +239,12 @@ function QuoteArtist( { artistInfo }) {
 		backgroundColor : color
 		}
 	}
-	const styleAnim = (index) => {
-		return {
-			animationName : index,
-		}
-	}
-	  
-	//
+
 	const setCurrentCountryMap = () => {
 		let find = false;
 		let el = svgCountryContainer.current;
 		if (el.hasChildNodes()) {
-			var svgPaths = el.childNodes;
+			let svgPaths = el.childNodes;
 			svgPaths.forEach( (child) => {
 				let nameSvg = child.getAttribute('class');
 				if(child.classList.contains('current-active-country')){
@@ -65,10 +262,17 @@ function QuoteArtist( { artistInfo }) {
 		}
 	}
 
+	useEffect(() => {
+		setCurrentCountryMap();
+	}, [artistInfo])
+
+
 	return (
 	<section className="container-heading">
 		<article className="container-quote">
-			<blockquote className={randomAnim} style={styleAnim(randomAnim)} dangerouslySetInnerHTML={quoteSplit} ></blockquote>
+
+			{/* <QuoteAnim artistInfo={artistInfo} /> */}
+			<QuoteMouse artistInfo={artistInfo} />
 
 			<div className="colors-panel-country">
 				
@@ -147,6 +351,5 @@ function QuoteArtist( { artistInfo }) {
 	</section>
   );
 }
-
 
 export default QuoteArtist;
